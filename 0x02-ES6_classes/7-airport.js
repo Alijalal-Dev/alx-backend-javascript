@@ -1,16 +1,12 @@
-export default class HolbertonClass {
-  constructor(size, location) {
-    if (typeof size !== 'number') throw new TypeError('Size must be a number');
-    if (typeof location !== 'string') {
-      throw new TypeError('Location must be a string');
-    }
-
-    this._size = size;
-    this._location = location;
+export default class Airport {
+  constructor(name, code) {
+    if (typeof name !== 'string') throw new TypeError('Name must be a string');
+    if (typeof code !== 'string') throw new TypeError('Code must be a string');
+    this._name = name;
+    this._code = code;
   }
 
-  [Symbol.toPrimitive](hint) {
-    if (hint === 'number') return this._size;
-    return this._location;
+  get [Symbol.toStringTag]() {
+    return `${this._code}`;
   }
 }
